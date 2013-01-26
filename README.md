@@ -4,13 +4,13 @@ This cookbook allows to fetch files served over HTTP/HTTPS using wget without ha
 
 Usage
 -----
-fetch_www 'foo' do
-  url 'http://example.com/example.txt'
-  dest '/tmp'
-  owner 'nobody'
-  group 'root'
-  overwrite true
-end
+    fetch_www 'foo' do
+      url 'http://example.com/example.txt'
+      dest '/tmp'
+      owner 'nobody'
+      group 'root'
+      overwrite true
+    end
 
 Contributing
 ------------
