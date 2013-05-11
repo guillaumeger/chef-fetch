@@ -17,4 +17,5 @@
 # limitations under the License.
 
 package 'wget' do
+  action :install
 end
