@@ -1,12 +1,10 @@
 actions :fetch
+default_action :fetch
 
-attribute :url, :kind_of => String, :required => true
-attribute :dest, :kind_of => String, :required => true
-attribute :overwrite, :default => false
-attribute :owner, :kind_of => String
-attribute :group, :kind_of => String
-
-def initialize(*args)
-  super
-  @action = :fetch
-end
+attribute :base_url, :kind_of => String, :required => true
+attribute :archive_type, :kind_of => String, :default => 'gzip'
+attribute :download_to, :kind_of => String, :default => Chef::Config[:file_cache_path]
+attribute :extract, :default => true
+attribute :extract_to, :kind_of => String
+attribute :symlink, :default => true
+attribute :symlink_to, :kind_of => String

@@ -1,20 +1,28 @@
-fetch Cookbook
-==============
-This cookbook allows to fetch files served over HTTP/HTTPS using wget without having to add the logic each time in a recipe.
+## Fetch
+This cookbook was written primarily to automate several steps I often have to do in recipes:
 
-Usage
------
-    fetch_www 'foo' do
-      url 'http://example.com/example.txt'
-      dest '/tmp'
-      owner 'nobody'
-      group 'root'
-      overwrite true
-    end
++ Fetch a tarball
++ Extract it somewhere
++ Symlink it elsewhere
 
-Contributing
-------------
+All these steps are wrapped in a neat LWRP.
 
+## Supports
+For now, only gzip tarballs are supported, but it'd be easy to implement other formats
+like bzip2, xz, zip, etc.
+
+It's also possible to fetch only a file without extracting it or symlinking it.
+
+## Usage
+~~~ text
+fetch_www 'smokeping-2.6.9.tar.gz' do
+  base_url 'http://oss.oetiker.ch/smokeping/pub'
+  extract_to '/usr/share'
+  symlink_to '/usr/share/smokeping'
+end
+~~~
+
+## Contributing
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write you change
@@ -22,7 +30,6 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
--------------------
-Authors: Jean-Francois Theroux <failshell@gmail.com>
+## License and Authors
+Authors: Jean-Francois Theroux <me@failshell.io>
 License: Apache version 2
