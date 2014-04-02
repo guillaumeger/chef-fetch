@@ -11,7 +11,7 @@ action :fetch do
   remote_file file do
     source "#{url}/#{new_resource.name}"
     if new_resource.extract == true
-      notifies :run, "execute[extracting gzip archive -> #{new_resource.name}]"
+      notifies :run, "execute[extracting gzip archive -> #{new_resource.name}]", :immediately
     end
   end
 
