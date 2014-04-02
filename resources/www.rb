@@ -7,4 +7,4 @@ attribute :download_to, :kind_of => String, :default => Chef::Config[:file_cache
 attribute :extract, :default => true
 attribute :extract_to, :kind_of => String
 attribute :symlink, :default => true
-attribute :symlink_to, :kind_of => String
+attribute :symlink_to, :kind_of => String, :default => '/tmp/fetch'
