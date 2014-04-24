@@ -16,8 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-fetch_www 'smokeping-2.6.9.tar.gz' do
-  base_url 'http://oss.oetiker.ch/smokeping/pub'
-  extract_to '/usr/share'
-  symlink_to '/usr/share/smokeping'
+#fetch_www 'smokeping-2.6.9.tar.gz' do
+#  base_url 'http://oss.oetiker.ch/smokeping/pub'
+#  extract_to '/usr/share'
+#  symlink_to '/usr/share/smokeping'
+#end
+
+fetch_www 'nexus-2.8.0.war' do
+  base_url 'http://www.sonatype.org/downloads/'
+  archive_type 'war'
+  extract_to '/tmp/nexus'
+  symlink_to '/tmp/nexus-test'
 end
