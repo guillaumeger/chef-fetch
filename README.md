@@ -1,15 +1,17 @@
 ## Fetch
 This cookbook was written primarily to automate several steps I often have to do in recipes:
 
-+ Fetch a tarball
++ Fetch some archive
 + Extract it somewhere
 + Symlink it elsewhere
 
 All these steps are wrapped in a neat LWRP.
 
 ## Supports
-For now, only gzip tarballs are supported, but it'd be easy to implement other formats
-like bzip2, xz, zip, etc.
+
+Possible ```archive_type```:
+- gzip (tar.gz)
+- war
 
 It's also possible to fetch only a file without extracting it or symlinking it.
 
@@ -22,10 +24,19 @@ fetch_www 'smokeping-2.6.9.tar.gz' do
 end
 ~~~
 
+~~~ text
+fetch_www 'nexus-2.8.0.war' do
+  base_url 'http://www.sonatype.org/downloads/'
+  archive_type 'war'
+  extract_to '/tmp/nexus'
+  symlink_to '/tmp/nexus-test'
+end
+~~~
+
 ## LWRP options
 
 + ```base_url```: where to get the archive file
-+ ```archive_type```: gzip (more to come)
++ ```archive_type```: gzip or war
 + ```download_to```: By default, to Chef's temp download directory. Can be changed to wherever.
 + ```extract```: defaults to ```true```
 + ```extract_to```: where to unpack the archive
@@ -42,4 +53,5 @@ end
 
 ## License and Authors
 Authors: Jean-Francois Theroux <me@failshell.io>
+
 License: Apache version 2
