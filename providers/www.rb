@@ -1,3 +1,5 @@
+use_inline_resources
+
 action :fetch do
   # Sprinkle a bit of voodoo on it
   unless new_resource.base_url.split('').last == '/'
@@ -13,6 +15,7 @@ action :fetch do
     if new_resource.extract == true
       notifies :run, "execute[extracting #{new_resource.archive_type} archive -> #{new_resource.name}]", :immediately
     end
+    not_if { ::File.exists?(file) }
   end
 
   # Extract
@@ -44,5 +47,5 @@ action :fetch do
       end
   end
 
-  new_resource.updated_by_last_action(true)
+  #new_resource.updated_by_last_action(true)
 end
