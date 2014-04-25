@@ -29,7 +29,9 @@ action :fetch do
         only_if { new_resource.extract == true }
       end
 
-      link new_resource.symlink_to do
+      #link new_resource.symlink_to do
+      link "symlinking #{new_resource.symlink_to}" do
+        target_file new_resource.symlink_to
         to new_resource.extract_to
         only_if { new_resource.symlink == true }
       end
@@ -41,11 +43,12 @@ action :fetch do
         only_if { new_resource.extract == true }
       end
 
-      link new_resource.symlink_to do
+      #link new_resource.symlink_to do
+      link "symlinking #{new_resource.symlink_to}" do
+        target_file new_resource.symlink_to
         to "#{new_resource.extract_to}/#{new_resource.name.gsub(/\.tar\.gz/, '')}"
         only_if { new_resource.symlink == true }
       end
   end
 
-  #new_resource.updated_by_last_action(true)
 end
