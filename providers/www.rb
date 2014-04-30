@@ -20,7 +20,7 @@ action :fetch do
 
   # Extract
   case new_resource.archive_type
-    when 'war'
+    when 'war', 'zip'
       package 'unzip'
 
       execute "extracting #{new_resource.archive_type} archive -> #{new_resource.name}" do

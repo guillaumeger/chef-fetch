@@ -30,5 +30,12 @@ fetch_www 'nexus-2.8.0.war' do
   notifies :restart, 'service[rsyslog]'
 end
 
+fetch_www 'ssoAdminTools_10.0.0.zip' do
+  base_url 'http://download.forgerock.org/downloads/openam/openam10/10.0.0/'
+  archive_type 'zip'
+  extract_to '/tmp/ssoadmin'
+  symlink_to '/tmp/ssoadmin-test'
+end
+
 # Bogus service to notify
 service 'rsyslog'

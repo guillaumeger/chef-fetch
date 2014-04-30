@@ -12,6 +12,7 @@ All these steps are wrapped in a neat LWRP.
 Possible ```archive_type```:
 - gzip (tar.gz)
 - war
+- zip
 
 It's also possible to fetch only a file without extracting it or symlinking it.
 
@@ -30,6 +31,15 @@ fetch_www 'nexus-2.8.0.war' do
   archive_type 'war'
   extract_to '/tmp/nexus'
   symlink_to '/tmp/nexus-test'
+end
+~~~
+
+~~~ text
+fetch_www 'ssoAdminTools_10.0.0.zip' do
+  base_url 'http://download.forgerock.org/downloads/openam/openam10/10.0.0/'
+  archive_type 'zip'
+  extract_to '/tmp/ssoadmin'
+  symlink_to '/tmp/ssoadmin-test'
 end
 ~~~
 
