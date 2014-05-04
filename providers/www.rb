@@ -21,7 +21,8 @@ action :fetch do
   # Extract
   case new_resource.archive_type
     when 'war', 'zip'
-      package 'unzip'
+      package 'unzip' do
+      end.run_action(:install)
 
       execute "extracting #{new_resource.archive_type} archive -> #{new_resource.name}" do
         action :nothing
