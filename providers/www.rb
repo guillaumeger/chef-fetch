@@ -2,8 +2,8 @@ use_inline_resources
 
 action :fetch do
   # Sprinkle a bit of voodoo on it
-  unless new_resource.base_url.split('').last == '/'
-    url = new_resource.base_url + '/'
+  if new_resource.base_url.split('').last == '/'
+    url = new_resource.base_url.chomp('/')
   else
     url = new_resource.base_url
   end
