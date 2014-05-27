@@ -51,5 +51,4 @@ action :fetch do
         only_if { new_resource.symlink == true }
       end
   end
-
 end
