@@ -45,9 +45,15 @@ action :fetch do
       end
 
       #link new_resource.symlink_to do
+      if new_resource.name =~ /tgz/
+        ext = /\.tgz/
+      else
+        ext = /\.tar\.gz/
+      end
+
       link "symlinking #{new_resource.symlink_to}" do
         target_file new_resource.symlink_to
-        to "#{new_resource.extract_to}/#{new_resource.name.gsub(/\.tar\.gz/, '')}"
+        to "#{new_resource.extract_to}/#{new_resource.name.gsub(ext, '')}"
         only_if { new_resource.symlink == true }
       end
   end

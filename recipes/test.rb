@@ -37,5 +37,11 @@ fetch_www 'ssoAdminTools_10.0.0.zip' do
   symlink_to '/tmp/ssoadmin-test'
 end
 
+fetch_www 'graylog2-server-0.20.0.tgz' do
+  base_url 'https://github.com/Graylog2/graylog2-server/releases/download/0.20.0'
+  extract_to '/opt'
+  symlink_to '/opt/graylog2'
+end
+
 # Bogus service to notify
 service 'rsyslog'
